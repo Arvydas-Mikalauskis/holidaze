@@ -15,3 +15,37 @@
 .searchForm_input {
   @apply w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-300;
 }
+
+/* How it works section */
+
+.howItWorks_container {
+  @apply flex flex-col items-center justify-center space-y-2;
+}
+
+.howItWorks_text {
+  @apply text-center text-lg text-slate-700 italic;
+}
+
+.howItWorks_circle {
+  @apply flex items-center justify-center w-16 h-16 bg-gold rounded-full shadow-md border-2;
+}
+
+.howItWorks_H_Text {
+  @apply text-xl font-semibold underline underline-offset-4 decoration-2 decoration-gold shadow-md;
+}
+
+.featuredDestinations_img {
+  @apply absolute inset-0 h-full w-full object-cover shadow-xl transition-transform duration-300 ease-in-out group-hover:scale-105;
+}
+
+.featuredDestinations_img_overlay {
+  @apply absolute inset-0 bg-black opacity-40 transition-transform duration-300 ease-in-out group-hover:scale-105 group-hover:opacity-20;
+}
+
+.featuredDestinations_overlayText_position {
+  @apply absolute inset-0 flex items-center justify-center;
+}
+
+.featuredDestinations_overlayText {
+  @apply text-white text-4xl font-bold transition-colors duration-300 ease-in-out group-hover:text-slate-200;
+}

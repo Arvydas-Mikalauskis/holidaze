@@ -1,6 +1,12 @@
-import Header from '../layout/Header'
-import SearchBar from '../searchBar/SearchBar'
-import MostPopularHotels from '../carousel/MostPopularHotels'
+import {
+  Header,
+  SearchBar,
+  MostPopularHotels,
+  HowItWorksSection,
+  DiscoverDestinations,
+  Testimonials,
+  PromoSection,
+} from '../components'
 
 const HomePage = () => {
   return (
@@ -8,6 +14,10 @@ const HomePage = () => {
       <Header />
       <SearchBar />
       <MostPopularHotels />
+      <HowItWorksSection />
+      <DiscoverDestinations />
+      <Testimonials />
+      <PromoSection />
     </>
   )
 }
