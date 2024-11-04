@@ -5,21 +5,21 @@ import Thailand from '../../assets/images/cities/thai.jpg'
 
 const DiscoverDestinations = () => {
   return (
-    <section className="mt-24">
-      <div className="flex justify-evenly items-center h-12">
-        <div>
-          <h3 className="font-semibold text-4xl text-center text-gold">
+    <section className="w-full mt-24">
+      <div className="container flex flex-col items-center justify-center mx-auto h-24 space-y-4">
+        <div className="border-y-4 border-gold px-4">
+          <h3 className="font-semibold text-3xl md:text-4xl text-center text-gold">
             Top Destinations You’ll Love
           </h3>
         </div>
-        <div className="max-w-lg italic">
+        <div className="text-center text-slate-700 font-semibold italic lg:text-lg">
           <p>
             Embark on an unforgettable journey, experience unique cultures, and
             create memories that last a lifetime.
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-4 items-center justify-center mx-auto max-w-7xl h-screen space-x-3">
+      <div className="container grid grid-cols-4 items-center justify-center mx-auto max-w-7xl h-screen space-x-3">
         <div className="relative mt-20 h-[580px] group cursor-pointer">
           <img className="featuredDestinations_img" src={Japan} alt="Japan" />
           <div className="featuredDestinations_img_overlay"></div>

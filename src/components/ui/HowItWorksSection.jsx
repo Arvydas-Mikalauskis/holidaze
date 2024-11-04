@@ -3,14 +3,16 @@ import React from 'react'
 const HowItWorksSection = () => {
   return (
     <section className="my-16">
-      <div className="flex flex-col items-center space-y-2 ">
-        <h3 className="text-4xl font-semibold text-gold">How it works</h3>
-        <p className="text-xl text-slate-800 italic">
+      <div className="flex flex-col items-center space-y-4 ">
+        <h3 className="text-4xl font-semibold text-gold border-y-4 border-gold px-4">
+          How it works
+        </h3>
+        <p className="text-center text-slate-700 font-semibold italic lg:text-lg">
           Find out more about our booking process
         </p>
       </div>
-      <div>
-        <div className="flex justify-center space-x-16 mt-12">
+      <div className="container mx-auto">
+        <div className="flex flex-col lg:flex-row justify-center items-center  mx-auto  mt-12 lg:space-x-4 xl:space-x-16 space-y-12 lg:space-y-0">
           <div className="howItWorks_container">
             <div className="howItWorks_circle">
               <span className="text-3xl text-white">1</span>

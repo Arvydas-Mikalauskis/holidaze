@@ -2,9 +2,9 @@ import React from 'react'
 
 const SearchBar = () => {
   return (
-    <div className="absolute bottom-16 left-0 right-0 m-auto bg-white max-w-6xl p-6 shadow-md rounded-md">
-      <form className="grid grid-cols-6 gap-6 items-center">
-        <div className="col-span-2">
+    <div className="container absolute -bottom-48 md:bottom-28 left-0 right-0 m-auto bg-white max-w-lg md:max-w-3xl xl:max-w-6xl p-6 shadow-md rounded-md">
+      <form className="grid md:grid-cols-6 gap-1 md:gap-6 items-center">
+        <div className="md:col-span-2">
           <label className="searchForm_label">Place</label>
           <input
             className="searchForm_input"
@@ -25,9 +25,7 @@ const SearchBar = () => {
           <input className="searchForm_input" type="number" />
         </div>
         <div>
-          <button className="w-full bg-gold text-white rounded-md px-2 py-2 mt-5">
-            Search
-          </button>
+          <button className="searchButton">Search</button>
         </div>
       </form>
     </div>

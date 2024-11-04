@@ -5,6 +5,8 @@ import Header from './layout/Header'
 import MostPopularHotels from './mostPopularHotels/MostPopularHotels'
 import Testimonials from './ui/Testimonials'
 import PromoSection from './ui/PromoSection'
+import ManagerPromo from './ui/ManagerPromo'
+import HotelCard from './hotelCard/HotelCard'
 
 export {
   DiscoverDestinations,
@@ -14,4 +16,6 @@ export {
   MostPopularHotels,
   Testimonials,
   PromoSection,
+  ManagerPromo,
+  HotelCard,
 }

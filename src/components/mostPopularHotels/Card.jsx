@@ -3,7 +3,7 @@ import { Icons } from '../../constants/icons/Icons'
 
 const Card = () => {
   return (
-    <div className="my-6 max-w-xs text-black border border-slate-300 shadow-md mx-auto ">
+    <div className="my-6 max-w-md text-black border border-slate-300 shadow-md mx-auto ">
       <div>
         <img className="object-cover" src={hotelImg} alt="Hotel picture" />
       </div>

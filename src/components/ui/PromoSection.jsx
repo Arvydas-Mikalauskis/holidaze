@@ -15,7 +15,7 @@ const PromoSection = () => {
           worldwide.
         </p>
         <div className="flex justify-center">
-          <button className="w-full p-3 px-6 rounded-full bg-gold md:w-56 hover:scale-95">
+          <button className="w-full p-3 px-6 rounded-md bg-gold md:w-56 transform hover:scale-105 transition ease-in duration-300">
             Become a Member
           </button>
         </div>

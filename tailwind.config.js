@@ -9,6 +9,7 @@ export default {
       },
       colors: {
         gold: '#E5BA57',
+        platinum: '#DBDBDB',
       },
     },
   },
