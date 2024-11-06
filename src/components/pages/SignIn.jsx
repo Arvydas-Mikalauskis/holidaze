@@ -1,10 +1,9 @@
 import SignInCover from '../../assets/images/signInImage.jpg'
 import { useState } from 'react'
 import ModalRegisterUser from '../forms/ModalRegisterUser'
+import LoginForm from '../forms/LoginForm'
 
 const SignIn = () => {
-  const [name, setName] = useState('')
-  const [password, setPassword] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleOpenModal = () => setIsModalOpen(true)
@@ -28,25 +27,7 @@ const SignIn = () => {
           <p className="text-center text-platinum font-semibold mt-4">
             Sign in to your account to continue your journey with us.
           </p>
-          <form>
-            <input
-              className="formInput_field"
-              type="email"
-              placeholder="Email adress. Must be valid noroff email"
-              required
-            />
-            <input
-              className="formInput_field"
-              type="password"
-              placeholder="Password. Must be atleast 8 digits"
-              required
-            />
-          </form>
-          <div className="flex justify-end mr-12 mt-6">
-            <button className="py-2 px-6 bg-platinum rounded-md shadow-md border border-platinum uppercase transform hover:scale-105 transition ease-in duration-300">
-              Submit
-            </button>
-          </div>
+          <LoginForm />
         </div>
         <div className="bg-white bg-opacity-70 mt-8 py-4 flex flex-col items-center space-y-4 ">
           <h2 className="text-xl font-semibold">Not a member?</h2>

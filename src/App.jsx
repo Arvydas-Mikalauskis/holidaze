@@ -12,6 +12,7 @@ import {
   Properties,
   SingleProperty,
 } from './components/pages/pages.js'
+import SignInManager from './components/pages/SignInManager.jsx'
 
 function App() {
   const router = createBrowserRouter(
@@ -23,6 +24,7 @@ function App() {
           <Route path="/properties/:id" element={<SingleProperty />} />
         </Route>
         <Route path="/login" element={<SignIn />} />
+        <Route path="/manager_login" element={<SignInManager />} />
       </>
     )
   )

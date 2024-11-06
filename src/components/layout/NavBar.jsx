@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { Icons } from '../../constants/icons/Icons'
+import SignIn_Btn from './SignIn_Btn'
 
 const NavBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -25,14 +26,7 @@ const NavBar = () => {
             List Your Property
           </Link>
         </div>
-        <div>
-          <Link
-            className="bg-gold bg-opacity-70 rounded-md shadow-lg text-slate-100 text-lg px-4 cursor-pointer hover:bg-opacity-100 transition-all duration-300 ease-in-out"
-            to="/login"
-          >
-            Sign In
-          </Link>
-        </div>
+        <SignIn_Btn />
       </div>
 
       {/* Mobile menu button */}
@@ -62,14 +56,14 @@ const NavBar = () => {
         <button onClick={toggleMobileMenu}>
           <Icons.CloseMobile className="text-3xl underline absolute top-6 right-10" />
         </button>
-        <Link className="mobileNav_link" to="/" onClick={toggleMobileMenu}>
-          Book Property
-        </Link>
-        <Link className="mobileNav_link" to="/" onClick={toggleMobileMenu}>
-          Contact Us
+        <Link className="mobileNav_link" to="/login" onClick={toggleMobileMenu}>
+          Sign In (Customer)
         </Link>
         <Link className="mobileNav_link" to="/login" onClick={toggleMobileMenu}>
-          Login
+          Sign In (Manager)
+        </Link>
+        <Link className="mobileNav_link" to="/" onClick={toggleMobileMenu}>
+          Book Property
         </Link>
       </div>
     </nav>
