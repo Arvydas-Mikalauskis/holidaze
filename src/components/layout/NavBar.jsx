@@ -2,9 +2,13 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { Icons } from '../../constants/icons/Icons'
 import SignIn_Btn from './SignIn_Btn'
+import Logout_Btn from './Logout_Btn'
+import { useAuth } from '../../utils/AuthProvider'
 
 const NavBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  const { user, logout } = useAuth()
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -26,7 +30,7 @@ const NavBar = () => {
             List Your Property
           </Link>
         </div>
-        <SignIn_Btn />
+        {user ? <Logout_Btn user={user} logout={logout} /> : <SignIn_Btn />}
       </div>
 
       {/* Mobile menu button */}
@@ -59,7 +63,11 @@ const NavBar = () => {
         <Link className="mobileNav_link" to="/login" onClick={toggleMobileMenu}>
           Sign In (Customer)
         </Link>
-        <Link className="mobileNav_link" to="/login" onClick={toggleMobileMenu}>
+        <Link
+          className="mobileNav_link"
+          to="/manager_login"
+          onClick={toggleMobileMenu}
+        >
           Sign In (Manager)
         </Link>
         <Link className="mobileNav_link" to="/" onClick={toggleMobileMenu}>

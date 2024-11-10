@@ -2,12 +2,39 @@ import SignInCover from '../../assets/images/signInImage.jpg'
 import { useState } from 'react'
 import ModalRegisterUser from '../forms/ModalRegisterUser'
 import LoginForm from '../forms/LoginForm'
+import { registerUser_URL } from '../../constants/apiEndpoints'
+import { useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleOpenModal = () => setIsModalOpen(true)
   const handleCloseModal = () => setIsModalOpen(false)
+  const [error, setError] = useState('')
+
+  const navigate = useNavigate()
+
+  const handleRegisterUser = async (data) => {
+    try {
+      const response = await fetch(registerUser_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...data, venueManager: false }),
+      })
+      if (!response.ok) {
+        throw new Error('Failed to register')
+      }
+
+      const result = await response.json()
+      console.log('Registration successful', result)
+      navigate('/')
+    } catch (error) {
+      console.error('Failed to register', error)
+      setError(error.toString())
+    }
+  }
 
   return (
     <section className="container">
@@ -42,7 +69,11 @@ const SignIn = () => {
           </button>
         </div>
       </div>
-      <ModalRegisterUser isOpen={isModalOpen} onClose={handleCloseModal} />
+      <ModalRegisterUser
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onSubmit={handleRegisterUser}
+      />
     </section>
   )
 }

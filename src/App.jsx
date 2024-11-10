@@ -11,7 +11,10 @@ import {
   SignIn,
   Properties,
   SingleProperty,
+  ManagerPage,
+  ProfilePage,
 } from './components/pages/pages.js'
+import { AuthProvider } from './utils/AuthProvider.jsx'
 import SignInManager from './components/pages/SignInManager.jsx'
 
 function App() {
@@ -22,6 +25,8 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="/properties" element={<Properties />} />
           <Route path="/properties/:id" element={<SingleProperty />} />
+          <Route path="/user" element={<ProfilePage />} />
+          <Route path="/manager" element={<ManagerPage />} />
         </Route>
         <Route path="/login" element={<SignIn />} />
         <Route path="/manager_login" element={<SignInManager />} />
@@ -31,7 +36,9 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </>
   )
 }

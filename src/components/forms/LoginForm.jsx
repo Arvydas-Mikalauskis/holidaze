@@ -1,11 +1,14 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { loginSchema } from '../forms/loginSchema'
-import { loginUser_URL } from '../../constants/apiEndpoints'
 import { useState } from 'react'
+import { useAuth } from '../../utils/AuthProvider'
+import { useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
   const [error, setError] = useState('')
+  const navigate = useNavigate()
+  const { login } = useAuth()
 
   const {
     register,
@@ -17,18 +20,9 @@ const LoginForm = () => {
 
   const handleLogin = async (data) => {
     try {
-      const response = await fetch(loginUser_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-      if (!response.ok) {
-        throw new Error('Failed to login')
-      }
-      const result = await response.json()
-      console.log('Login successful', result)
+      await login(data.email, data.password)
+      console.log('Login successful') // add toast message later
+      navigate('/')
     } catch (error) {
       console.error('Failed to login', error)
       setError(error.toString())

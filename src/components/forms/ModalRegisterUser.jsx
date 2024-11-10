@@ -1,7 +1,5 @@
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Icons } from '../../constants/icons/Icons'
-import { registerUser_URL } from '../../constants/apiEndpoints'
 import { registerSchema } from './registerSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -15,50 +13,6 @@ const ModalRegisterUser = ({ isOpen, onClose, onSubmit }) => {
   } = useForm({
     resolver: zodResolver(registerSchema),
   })
-
-  const [error, setError] = useState('')
-
-  /* const handleRegisterManager = async (data) => {
-    try {
-      const response = await fetch(registerUser_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ ...data, venueManager: true }),
-      })
-      if (!response.ok) {
-        throw new Error('Failed to register')
-      }
-
-      const result = await response.json()
-      console.log('Registration successful', result)
-    } catch (error) {
-      console.error('Failed to register', error)
-      setError(error.toString())
-    }
-  } */
-
-  const handleRegisterUser = async (data) => {
-    try {
-      const response = await fetch(registerUser_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ ...data, venueManager: false }),
-      })
-      if (!response.ok) {
-        throw new Error('Failed to register')
-      }
-
-      const result = await response.json()
-      console.log('Registration successful', result)
-    } catch (error) {
-      console.error('Failed to register', error)
-      setError(error.toString())
-    }
-  } // tomorrow move this one to another page
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
