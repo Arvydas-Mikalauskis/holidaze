@@ -4,6 +4,7 @@ import Properties from './Properties'
 import SingleProperty from './SingleProperty'
 import ProfilePage from './ProfilePage'
 import ManagerPage from './ManagerPage'
+import AddVenue from './AddVenue'
 
 export {
   HomePage,
@@ -12,4 +13,5 @@ export {
   SingleProperty,
   ProfilePage,
   ManagerPage,
+  AddVenue,
 }

@@ -13,6 +13,7 @@ import {
   SingleProperty,
   ManagerPage,
   ProfilePage,
+  AddVenue,
 } from './components/pages/pages.js'
 import { AuthProvider } from './utils/AuthProvider.jsx'
 import SignInManager from './components/pages/SignInManager.jsx'
@@ -25,6 +26,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="/properties" element={<Properties />} />
           <Route path="/properties/:id" element={<SingleProperty />} />
+          <Route path="/addVenue" element={<AddVenue />} />
           <Route path="/user" element={<ProfilePage />} />
           <Route path="/manager" element={<ManagerPage />} />
         </Route>
