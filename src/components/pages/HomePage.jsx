@@ -11,7 +11,7 @@ import {
 } from '../components'
 
 const HomePage = () => {
-  useEffect(() => {
+  /* useEffect(() => {
     const fetchProfile = async () => {
       try {
         const response = await fetch(
@@ -34,7 +34,7 @@ const HomePage = () => {
       }
     }
     fetchProfile()
-  }, [])
+  }, []) */
   return (
     <>
       <Header />

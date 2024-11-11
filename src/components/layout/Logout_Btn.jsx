@@ -24,9 +24,7 @@ const Logout_Btn = ({ user, logout }) => {
             aria-orientation="vertical"
             aria-label="options-menu"
           >
-            {console.log(user.data)}{' '}
-            {/* Not working correctly, no venueManager value in API response */}
-            {user.data.venueManager ? (
+            {user.data.venueManager === false ? (
               <Link
                 to="/user"
                 className="block px-4 py-2 hover:bg-gold"

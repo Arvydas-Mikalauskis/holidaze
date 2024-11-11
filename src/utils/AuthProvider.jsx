@@ -9,13 +9,12 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch(loginUser_URL, {
+      const response = await fetch(`${loginUser_URL}?_holidaze=true`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYXJ2aXMiLCJlbWFpbCI6ImFydm1pazgzODMyQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzMwOTE4Mzg3fQ.3Tw8PnCvYhEU3JpO_F1ReVxsKolE65juYTI_q009qqA',
-          'X-Noroff-API-Key': 'ff27a627-0a26-4dff-9839-e2b8bd291711',
+          Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
+          'X-Noroff-Api-Key': import.meta.env.VITE_API_KEY,
         },
         body: JSON.stringify({ email, password }),
       })
@@ -23,6 +22,7 @@ export const AuthProvider = ({ children }) => {
 
       if (response.ok) {
         setUser(data)
+        console.log('Login successful', data)
       } else {
         console.error('Login failed', data.message)
       }
