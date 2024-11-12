@@ -13,7 +13,7 @@ const AddVenueForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(addVenueSchema),
+    /* resolver: zodResolver(addVenueSchema), */
   })
 
   const onSubmit = async (data) => {
@@ -33,8 +33,8 @@ const AddVenueForm = () => {
       setSuccess('Venue added successfully')
       console.log('Venue added successfully', response)
     } catch (error) {
-      setError('Failed to add venue', error.message)
-      console.error(error)
+      setError(`Failed to add venue: ${error.message}`)
+      console.error('Submission error:', error)
     }
   } //  move this to addVenue tomorrow
 
@@ -104,10 +104,11 @@ const AddVenueForm = () => {
         placeholder="Country"
         className="formInput_field"
       />
-
-      <button type="submit" className="p-3 bg-blue-500">
-        Add venue
-      </button>
+      <div>
+        <button type="submit" className="p-3 bg-blue-500">
+          Add venue
+        </button>
+      </div>
 
       {success && <p>{success}</p>}
       {error && <p>{error}</p>}

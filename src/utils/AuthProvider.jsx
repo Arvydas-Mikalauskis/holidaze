@@ -6,6 +6,7 @@ const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useLocalStorage('user', null)
+  const [apiKey, setApiKey] = useLocalStorage('apiKey', null)
 
   const login = async (email, password) => {
     try {
@@ -14,7 +15,6 @@ export const AuthProvider = ({ children }) => {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
-          'X-Noroff-Api-Key': import.meta.env.VITE_API_KEY,
         },
         body: JSON.stringify({ email, password }),
       })
@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }) => {
 
       if (response.ok) {
         setUser(data)
+        setApiKey(data.accessToken)
         console.log('Login successful', data)
       } else {
         console.error('Login failed', data.message)
@@ -33,7 +34,9 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null)
+    setApiKey(null)
     window.localStorage.removeItem('user')
+    window.localStorage.removeItem('apiKey')
   }
 
   return (

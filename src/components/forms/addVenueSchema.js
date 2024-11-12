@@ -1,10 +1,11 @@
 import { z } from 'zod'
 
 export const addVenueSchema = z.object({
-  name: z.string().min(4, 'Name must be at least 2 characters long'),
+  name: z.string().min(4, 'Name must be at least 4 characters long'),
   description: z
     .string()
-    .min(8, 'Description must be at least 10 characters long'),
+    .min(10, 'Description must be at least 10 characters long'),
+
   media: z
     .array(
       z.object({
@@ -26,7 +27,7 @@ export const addVenueSchema = z.object({
     .optional(),
   location: z
     .object({
-      adress: z.string().optional(),
+      address: z.string().optional(),
       city: z.string().optional(),
       zip: z.string().optional(),
       country: z.string().optional(),
