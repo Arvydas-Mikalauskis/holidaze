@@ -2,10 +2,13 @@ import { useState } from 'react'
 import LoginForm from '../forms/LoginForm'
 import ModalRegisterUser from '../forms/ModalRegisterUser'
 import { registerUser_URL } from '../../constants/apiEndpoints'
+import { useNavigate } from 'react-router-dom'
 
 const SignInManager = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [error, setError] = useState('')
+
+  const navigate = useNavigate()
 
   const handleOpenModal = () => setIsModalOpen(true)
   const handleCloseModal = () => setIsModalOpen(false)
@@ -25,6 +28,7 @@ const SignInManager = () => {
 
       const result = await response.json()
       console.log('Registration successful', result)
+      navigate('/manager_login')
     } catch (error) {
       console.error('Failed to register', error)
       setError(error.toString())

@@ -4,19 +4,16 @@ export const addVenueSchema = z.object({
   name: z.string().min(4, 'Name must be at least 4 characters long'),
   description: z
     .string()
-    .min(10, 'Description must be at least 10 characters long'),
-
+    .min(4, 'Description must be at least 4 characters long'),
   media: z
     .array(
       z.object({
         url: z.string().url('Must be a valid URL'),
-        alt: z.string().min(4, 'Alt text must be at least 4 characters long'),
       })
     )
     .optional(),
   price: z.number().min(1, 'Price must be at least 1$'),
   maxGuests: z.number().min(1, 'Max guests must be at least 1'),
-  rating: z.number().optional().default(0),
   meta: z
     .object({
       wifi: z.boolean().optional().default(false),
@@ -27,11 +24,8 @@ export const addVenueSchema = z.object({
     .optional(),
   location: z
     .object({
-      address: z.string().optional(),
-      city: z.string().optional(),
-      zip: z.string().optional(),
-      country: z.string().optional(),
-      continent: z.string().optional(),
+      city: z.string().optional().nullable(),
+      country: z.string().optional().nullable(),
     })
     .optional(),
 })

@@ -2,18 +2,29 @@ import { ManagerPromo, HotelCard } from '../components'
 import { allVenues } from '../../constants/apiEndpoints'
 import { useEffect, useState } from 'react'
 import Loader from '../common/Loader'
+import { useAuth } from '../../utils/AuthProvider'
 
 const Properties = () => {
   const [venues, setVenues] = useState([])
-  const [visibleVenues, setVisibleVenues] = useState(8)
+  const [visibleVenues, setVisibleVenues] = useState(11)
   const [loading, setLoading] = useState(true)
 
+  const { token } = useAuth()
+
   const displayedVenues = venues.slice(0, visibleVenues)
+
+  /* ?sort=created&limit=50&page=1 */
 
   useEffect(() => {
     const fetchVenues = async () => {
       try {
-        const response = await fetch(allVenues)
+        const response = await fetch(allVenues, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+            'X-Noroff-Api-Key': import.meta.env.VITE_API_KEY,
+          },
+        })
         const data = await response.json()
         console.log(data)
         setVenues(data.data)
@@ -24,7 +35,7 @@ const Properties = () => {
       }
     }
     fetchVenues()
-  }, [setVenues])
+  }, [setVenues, token])
 
   return (
     <section className="container">

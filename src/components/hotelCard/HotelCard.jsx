@@ -9,16 +9,16 @@ const HotelCard = ({ venue }) => {
             <div>
               <img
                 className="max-w-xs object-cover rounded-sm shadow-lg"
-                src={hotelRoom}
+                src={venue.media[0].url || { hotelRoom }}
                 alt="hotel picture"
               />
             </div>
             <div className="w-full absolute bottom-2 text-white">
               <div className="flex justify-around text-sm">
-                <p>Wifi</p>
-                <p>Breakfast included</p>
-                <p>Pets allowed</p>
-                <p>Free parking</p>
+                <p>{venue.meta.wifi && 'Wifi included'}</p>
+                <p>{venue.meta.breakfast && 'Breakfast included'}</p>
+                <p>{venue.meta.parking && 'Free parking'}</p>
+                <p>{venue.meta.pets && 'Pets allowed'}</p>
               </div>
             </div>
           </div>
@@ -29,10 +29,12 @@ const HotelCard = ({ venue }) => {
             <p className="text-sm text-slate-700">{venue.description}</p>
           </div>
           <div className="text-center font-medium">
-            <h4>Location</h4>
+            <h4>
+              {venue.location.city} / {venue.location.country}
+            </h4>
           </div>
           <div className="flex justify-evenly items-center font-medium">
-            <h4>Price 100$ / Night </h4>
+            <h4>{venue.price} / Night </h4>
             <button className="bg-slate-800 px-8 py-1 rounded-md text-gold shadow-md">
               Book
             </button>

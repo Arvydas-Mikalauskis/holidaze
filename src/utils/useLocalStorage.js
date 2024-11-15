@@ -3,8 +3,8 @@ import { useState } from 'react'
 function useLocalStorage(key, initialValue) {
   const [storedValue, setStoredValue] = useState(() => {
     try {
-      const apiKey = localStorage.getItem(key)
-      return apiKey ? JSON.parse(apiKey) : initialValue
+      const apiToken = localStorage.getItem(key)
+      return apiToken ? JSON.parse(apiToken) : initialValue
     } catch (error) {
       console.log(error)
       return initialValue

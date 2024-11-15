@@ -3,40 +3,52 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { addVenueSchema } from './addVenueSchema'
 import { useState } from 'react'
 import { createVenue_URL } from '../../constants/apiEndpoints'
+import { useAuth } from '../../utils/AuthProvider'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const AddVenueForm = () => {
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
 
+  const { token } = useAuth()
+
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
-    /* resolver: zodResolver(addVenueSchema), */
+    resolver: zodResolver(addVenueSchema),
   })
 
   const onSubmit = async (data) => {
+    setError('')
+    setSuccess('')
     try {
       const response = await fetch(createVenue_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
+          Authorization: `Bearer ${token}`,
           'X-Noroff-Api-Key': import.meta.env.VITE_API_KEY,
         },
         body: JSON.stringify(data),
       })
       if (!response.ok) {
-        throw new Error('Failed to submit form for venue')
+        throw new Error('Failed to create a venue')
       }
+      const result = await response.json()
       setSuccess('Venue added successfully')
       console.log('Venue added successfully', response)
+      reset()
+      navigate('/')
     } catch (error) {
       setError(`Failed to add venue: ${error.message}`)
       console.error('Submission error:', error)
     }
-  } //  move this to addVenue tomorrow
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -110,8 +122,8 @@ const AddVenueForm = () => {
         </button>
       </div>
 
-      {success && <p>{success}</p>}
-      {error && <p>{error}</p>}
+      {success && <p className="absoulute bottom-0 p-20">{success}</p>}
+      {error && <p className="absoulute bottom-0 p-20">{error}</p>}
     </form>
   )
 }

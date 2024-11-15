@@ -7,7 +7,7 @@ const ManagerPage = () => {
     <section className="my-12">
       <div className="text-center mt-24">
         <h1 className="text-2xl text-slate-700 font-semibold mb-10 ">
-          Welcome back, {user.data.name}
+          Welcome back, {user.name}
         </h1>
       </div>
       <div className="bg-platinum bg-opacity-80 flex flex-col max-w-lg mx-auto rounded-md shadow-md p-6 border">
@@ -15,12 +15,12 @@ const ManagerPage = () => {
           <div>
             <img
               className="rounded-xl"
-              src={user.data.avatar.url}
+              src={user.avatar.url}
               alt="profile picture"
             />
           </div>
           <div className="flex flex-col items-center justify-evenly text-center">
-            <p>Email: {user.data.email}</p>
+            <p>Email: {user.email}</p>
             <p>Phone: +47 000 000</p>
             <p>Adress: Trondheim, Norway</p>
           </div>

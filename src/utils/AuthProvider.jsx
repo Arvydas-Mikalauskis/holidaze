@@ -6,7 +6,7 @@ const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useLocalStorage('user', null)
-  const [apiKey, setApiKey] = useLocalStorage('apiKey', null)
+  const [token, setToken] = useLocalStorage('bearerToken', null)
 
   const login = async (email, password) => {
     try {
@@ -14,18 +14,20 @@ export const AuthProvider = ({ children }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
         },
         body: JSON.stringify({ email, password }),
       })
-      const data = await response.json()
+      const result = await response.json()
+
+      console.log('Response data:', result)
 
       if (response.ok) {
-        setUser(data)
-        setApiKey(data.accessToken)
-        console.log('Login successful', data)
+        setUser(result.data)
+        setToken(result.data.accessToken)
+        console.log('Login successful', result.data)
+        console.log('Bearer token', result.data.accessToken)
       } else {
-        console.error('Login failed', data.message)
+        console.error('Login failed', result.message)
       }
     } catch (error) {
       console.error('Error', error)
@@ -34,13 +36,13 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null)
-    setApiKey(null)
+    setToken(null)
     window.localStorage.removeItem('user')
-    window.localStorage.removeItem('apiKey')
+    window.localStorage.removeItem('bearerToken')
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, token }}>
       {children}
     </AuthContext.Provider>
   )
