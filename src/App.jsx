@@ -16,6 +16,7 @@ import {
   AddVenue,
 } from './components/pages/pages.js'
 import { AuthProvider } from './utils/AuthProvider.jsx'
+import { VenuesProvider } from './utils/VenuesContext.jsx'
 import SignInManager from './components/pages/SignInManager.jsx'
 
 function App() {
@@ -39,7 +40,9 @@ function App() {
   return (
     <>
       <AuthProvider>
-        <RouterProvider router={router} />
+        <VenuesProvider>
+          <RouterProvider router={router} />
+        </VenuesProvider>
       </AuthProvider>
     </>
   )

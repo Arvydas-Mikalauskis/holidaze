@@ -18,9 +18,6 @@ const MostPopularHotels = () => {
       </div>
       <div className="container grid mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-2 mt-12">
         <Card />
-        <Card />
-        <Card />
-        <Card />
       </div>
     </section>
   )
