@@ -2,7 +2,7 @@ import Card from './Card'
 
 const MostPopularHotels = () => {
   return (
-    <section className="w-full mt-72 md:mt-24">
+    <section className="w-full mt-72 md:my-24">
       <div className="container flex flex-col items-center justify-center mx-auto h-24 space-y-4">
         <div className="border-y-4 border-gold px-4">
           <h2 className="font-semibold text-3xl md:text-4xl text-center text-gold">
@@ -16,7 +16,7 @@ const MostPopularHotels = () => {
           </p>
         </div>
       </div>
-      <div className="h-1/2 container grid mx-auto grid-cols-1 my-12">
+      <div className="h-1/2 grid grid-cols-1 my-12 overflow-hidden">
         <Card />
       </div>
     </section>

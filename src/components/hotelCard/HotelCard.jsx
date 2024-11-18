@@ -1,4 +1,5 @@
 import hotelRoom from '../../assets/images/hotelRoom.jpg'
+import { Link } from 'react-router-dom'
 
 const HotelCard = ({ venue }) => {
   return (
@@ -35,9 +36,12 @@ const HotelCard = ({ venue }) => {
           </div>
           <div className="flex justify-evenly items-center font-medium">
             <h4>{venue.price} / Night </h4>
-            <button className="bg-slate-800 px-8 py-1 rounded-md text-gold shadow-md">
-              Book
-            </button>
+            <Link
+              to={`/venue/${venue.id}`}
+              className="bg-slate-800 px-8 py-1 rounded-md text-gold shadow-md"
+            >
+              Book now
+            </Link>
           </div>
         </div>
       </div>

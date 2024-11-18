@@ -21,13 +21,13 @@ const Card = () => {
     slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 13000,
+    autoplaySpeed: 3000,
     pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
@@ -54,25 +54,27 @@ const Card = () => {
       {loading ? (
         <Loader loading={loading} />
       ) : (
-        <Slider {...settings} className="relative px-4">
+        <Slider {...settings}>
           {displayedVenues.map((venue) => (
-            <div
-              key={venue.id}
-              className="flex flex-col gap-2 h-[380px] text-black border border-slate-300 rounded-md overflow-hidden "
-            >
-              <div className="h-full">
-                <img
-                  className="object-cover w-full h-full"
-                  src={venue.media[0].url}
-                  alt={hotelImg}
-                />
-              </div>
-              <div className="absolute bottom-1 w-full py-2 px-4 text-black bg-gold bg-opacity-15 overflow-x-hiddenidden">
-                <div className="flex flex-col">
-                  <h3 className="text-sm font-semibold">{venue.name}</h3>
-                  <div className="flex items-center space-x-2 ">
-                    <Icons.location />
-                    <p className="">{venue.location.city}</p>
+            <div key={venue.id} className="slide-wrapper px-2">
+              <div
+                className="flex flex-col h-[280px] w-full text-black border-2 rounded-md 
+        shadow-md overflow-hidden relative"
+              >
+                <div className="h-full w-full">
+                  <img
+                    className="object-cover h-full w-full"
+                    src={venue.media[0].url}
+                    alt={hotelImg}
+                  />
+                </div>
+                <div className="absolute bottom-0 w-full py-2 px-4 text-black bg-gold bg-opacity-80 backdrop-blur-sm overflow-x-hidden">
+                  <div className="flex flex-col truncate">
+                    <h3 className="text-sm font-semibold">{venue.name}</h3>
+                    <div className="flex items-center space-x-2">
+                      <Icons.location />
+                      <p className="">{venue.location.city}</p>
+                    </div>
                   </div>
                 </div>
               </div>
