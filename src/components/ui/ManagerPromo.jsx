@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ManagerPromo = () => {
   return (
@@ -7,7 +7,9 @@ const ManagerPromo = () => {
         Join Holidaze as a property manager and open the door to new guests!
         List your property easily and start earning today.{' '}
       </h4>
-      <button className="text-blue-600">Register as Manager</button>
+      <Link to="/manager_login" className="text-blue-600">
+        Register as Manager
+      </Link>
     </div>
   )
 }

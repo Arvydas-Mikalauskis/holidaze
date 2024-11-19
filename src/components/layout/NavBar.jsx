@@ -15,19 +15,16 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="relative bg-black -mb-12 w-full h-12 flex justify-end  items-center font-heading text-xl font-bold px-6 border-b border-gold text-gold z-10">
+    <nav className="relative w-full h-12 flex justify-end md:justify-around items-center bg-black -mb-12 font-heading text-xl font-bold px-6 border-b border-gold text-gold z-10">
       <div className="container justify-between items-center hidden md:flex">
         <div>
           <Link className="desktopNavLink" to="/">
             Holidaze
           </Link>
         </div>
-        <div className="space-x-24">
+        <div className="">
           <Link className="desktopNavLink" to="/properties">
             Available Properties
-          </Link>
-          <Link className="desktopNavLink" to="/">
-            List Your Property
           </Link>
         </div>
         {user ? <Logout_Btn user={user} logout={logout} /> : <SignIn_Btn />}

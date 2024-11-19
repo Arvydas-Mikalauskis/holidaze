@@ -2,12 +2,42 @@ import { useParams, useLoaderData } from 'react-router-dom'
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { venues_URL } from '../../constants/apiEndpoints'
+import { venues_URL, bookVenue_URL } from '../../constants/apiEndpoints'
 import { Icons } from '../../constants/icons/Icons'
+import { useAuth } from '../../utils/AuthProvider'
 
 const VenuePage = () => {
   const { id } = useParams()
   const venue = useLoaderData()
+  const { token } = useAuth()
+
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+
+  const handleBooking = async () => {
+    if (startDate && endDate) {
+      const response = await fetch(`${bookVenue_URL}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          'X-Noroff-Api-Key': import.meta.env.VITE_API_KEY,
+        },
+        body: JSON.stringify({
+          dateFrom: startDate,
+          dateTo: endDate,
+          venueId: id,
+          guests: 1,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to book venue')
+      } else {
+        console.log('Venue booked successfully', response)
+      }
+    }
+  }
 
   return (
     <section className="container">
@@ -50,6 +80,33 @@ const VenuePage = () => {
               <p>{venue.meta.pets && 'Pets allowed'}</p>
             </div>
           </div>
+        </div>
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex space-x-4">
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              selectsStart
+              startDate={startDate}
+              endDate={endDate}
+              placeholderText="Start date"
+            />
+            <DatePicker
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              minDate={startDate}
+              placeholderText="End date"
+            />
+          </div>
+          <button
+            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+            onClick={handleBooking}
+          >
+            Book Now
+          </button>
         </div>
       </div>
     </section>
