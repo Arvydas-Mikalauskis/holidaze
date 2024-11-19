@@ -1,6 +1,14 @@
-import Header from '../layout/Header'
-import SearchBar from '../searchBar/SearchBar'
-import MostPopularHotels from '../carousel/MostPopularHotels'
+import { BASE_API_URL } from '../../constants/apiEndpoints'
+import { useEffect } from 'react'
+import {
+  Header,
+  SearchBar,
+  MostPopularHotels,
+  HowItWorksSection,
+  DiscoverDestinations,
+  Testimonials,
+  PromoSection,
+} from '../components'
 
 const HomePage = () => {
   return (
@@ -8,6 +16,10 @@ const HomePage = () => {
       <Header />
       <SearchBar />
       <MostPopularHotels />
+      <HowItWorksSection />
+      <DiscoverDestinations />
+      <Testimonials />
+      <PromoSection />
     </>
   )
 }
