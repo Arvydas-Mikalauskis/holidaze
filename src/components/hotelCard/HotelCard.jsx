@@ -4,7 +4,7 @@ import { Icons } from '../../constants/icons/Icons'
 
 const HotelCard = ({ venue }) => {
   return (
-    <div className="max-w-sm flex flex-col mx-auto bg-slate-200 space-y-4 shadow-lg rounded-md pb-4 mb-6 border-2 border-slate-200">
+    <div className="venue-card max-w-sm flex flex-col mx-auto bg-slate-200 space-y-4 shadow-lg rounded-md pb-4 mb-6 border-2 border-slate-200">
       <div className="relative">
         <div>
           <img

@@ -45,7 +45,7 @@ const VenuePage = () => {
         <div className="text-2xl text-center my-8 font-semibold">
           <h1>{venue.name}</h1>
         </div>
-        <div className="max-w-md mx-auto">
+        <div className="max-w-sm mx-auto">
           <img
             src={venue.media[0].url}
             alt="Image of property"
