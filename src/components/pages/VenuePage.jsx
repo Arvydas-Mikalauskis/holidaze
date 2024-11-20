@@ -49,20 +49,22 @@ const VenuePage = () => {
           <img
             src={venue.media[0].url}
             alt="Image of property"
-            className="w-full h-full object-cover rounded-md shadow-md border-2 border-slate-200"
+            className="w-full h-auto object-cover rounded-md shadow-md border-2 border-slate-200"
           />
         </div>
-        <div className="text-center my-8">
+        <div className="text-center text-lg italic my-8 space-y-2">
+          <h2 className="font-medium">About Hotel</h2>
           <p>{venue.description}</p>
         </div>
-        <div className="text-center my-8">
+        <div className="text-center text-lg italic my-8 space-y-2">
+          <h2 className="font-medium">Location</h2>
           <p>
             {venue.location.city} / {venue.location.country}
           </p>
         </div>
         <div className="flex flex-col items-center justify-center">
-          <h2 className="text-lg font-medium">Amenities</h2>
-          <div className="flex space-x-4">
+          <h2 className="text-lg font-medium mb-1">Amenities</h2>
+          <div className="flex space-x-4 text-lg">
             <div className="flex items-center space-x-2">
               <Icons.wifi />
               <p>{venue.meta.wifi && 'Wifi included'}</p>
@@ -81,28 +83,27 @@ const VenuePage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center">
-          <div className="flex space-x-4">
+        <div className="w-full flex flex-col mt-12">
+          <h4 className="text-lg text-center font-medium mb-2 ">
+            Availability
+          </h4>
+          <div className="flex mt-4">
             <DatePicker
               selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              selectsStart
+              onChange={(dates) => {
+                const [start, end] = dates
+                setStartDate(start)
+                setEndDate(end)
+              }}
+              selectsRange
               startDate={startDate}
               endDate={endDate}
-              placeholderText="Start date"
-            />
-            <DatePicker
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
-              selectsEnd
-              startDate={startDate}
-              endDate={endDate}
-              minDate={startDate}
-              placeholderText="End date"
+              placeholderText="Start date & end date"
+              inline
             />
           </div>
           <button
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+            className="w-1/2 mx-auto my-12 bg-green-700 px-2 py-2 rounded-md shadow-md text-white font-semibold hover:bg-green-600 transition duration-300 ease-in-out"
             onClick={handleBooking}
           >
             Book Now

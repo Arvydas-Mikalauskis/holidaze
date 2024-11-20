@@ -101,7 +101,7 @@
 }
 
 .addProperty_btn {
-  @apply bg-green-700 p-2 rounded-md shadow-md text-white font-semibold transition-transform duration-300 ease-in-out hover:scale-105;
+  @apply bg-blue-500 p-2 rounded-md shadow-md text-white font-semibold transition-transform duration-300 ease-in-out hover:scale-105;
 }
 
 /* Slider */
@@ -121,4 +121,39 @@
 .venue-animation .venue-card.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Date Picker classes */
+
+.react-datepicker {
+  @apply bg-platinum shadow-lg border border-gold border-opacity-40 mx-auto text-sm scale-110  !important;
+}
+
+.react-datepicker__header {
+  @apply bg-gold bg-opacity-80 text-black p-4 !important;
+}
+
+.react-datepicker__day {
+  @apply w-10 h-10 leading-10 !important;
+}
+
+.react-datepicker__day-name {
+  @apply w-10 h-10 leading-10 !important;
+}
+
+.react-datepicker__day:hover {
+  @apply bg-green-600 !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-range {
+  @apply bg-green-700 !important;
+}
+
+.react-datepicker__navigation-icon::before {
+  @apply border-white !important;
+}
+
+.react-datepicker__navigation:hover .react-datepicker__navigation-icon::before {
+  @apply border-black !important;
 }
