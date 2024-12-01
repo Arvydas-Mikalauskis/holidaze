@@ -1,5 +1,3 @@
-import { BASE_API_URL } from '../../constants/apiEndpoints'
-import { useEffect } from 'react'
 import {
   Header,
   SearchBar,
